@@ -170,9 +170,15 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 6f81e28d0b8dcfd40818d59f18706b3a, type: 2}
   resolution: 64
   displacement: 0.1
-  shape: 0
+  shape: 1
   instanceScale: 2
-  seed: 0
+  type: 0
+  noiseSettings:
+    seed: 0
+    frequency: 4
+    octaves: 1
+    lacunarity: 2
+    persistence: 0.5
   domain:
     translation:
       x: 0
@@ -187,6 +193,7 @@ MonoBehaviour:
       y: 8
       z: 8
   dimensions: 3
+  tiling: 0
 --- !u!1 &1084179308
 GameObject:
   m_ObjectHideFlags: 0

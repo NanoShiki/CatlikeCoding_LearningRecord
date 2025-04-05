@@ -7,6 +7,7 @@ using Unity.Mathematics;
 using static Unity.Mathematics.math;
 
 public static class Shapes {
+
     public delegate JobHandle ScheduleDelegate(
         NativeArray<float3x4> positions, NativeArray<float3x4> normals,
         int resolution, float4x4 trs, JobHandle dependency
@@ -20,6 +21,7 @@ public static class Shapes {
         Point4 GetPoint4(int i, float resolution, float invResolution);
     }
     
+    //use index to spawn uv, then use uv to spawn point in local space.
     public struct Plane : IShape{
         public Point4 GetPoint4(int i, float resolution, float invResolution){
             float4x2 uv = IndexTo4UV(i, resolution, invResolution);
@@ -84,6 +86,8 @@ public static class Shapes {
         return uv;
     }
 
+
+    //use job system to get the points in local space and transform them into world space.
 	[BurstCompile(FloatPrecision.Standard, FloatMode.Fast, CompileSynchronously = true)]
 	public struct Job<S> : IJobFor where S : struct, IShape{
 
