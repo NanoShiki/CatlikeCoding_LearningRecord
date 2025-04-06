@@ -100,4 +100,7 @@ public readonly struct SmallXXHash4 {
         RotateLeft((uint4)data * primeC + accumulator, 17) * primeD;
 
     public static SmallXXHash4 Seed(int4 seed) => (uint4)seed + primeE;
+
+	public static SmallXXHash4 Select (SmallXXHash4 a, SmallXXHash4 b, bool4 c) =>
+		math.select(a.accumulator, b.accumulator, c);
 }
